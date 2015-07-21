@@ -1,0 +1,44 @@
+{
+  "name": "node-api-server",
+  "version": "0.0.0",
+  "description": "",
+  "main": "api-server.js",
+  "scripts": {
+    "start": "npm run api-server & npm run webpack-server",
+
+    "webpack-server": "node config/ac-webpack/bin",
+    "api-server": "node api-server.js",
+
+    "build": "NODE_ENV=production webpack -p --config --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikeyamadeo/react-scaffold.git"
+  },
+  "author": "ProvoJS",
+  "license": "MIT",
+  "homepage": "https://github.com/provojs/node-api-server",
+  "devDependencies": {
+    "style-loader": "~0.8.3",
+    "css-loader": "~0.9.1",
+    "sass-loader": "~0.4.2",
+    "babel-loader": "~4.1.0",
+    "file-loader": "~0.8.1",
+    "url-loader": "~0.5.5",
+    "babel-runtime": "~4.7.16",
+    "webpack-dev-server": "~1.7.0",
+    "react-hot-loader": "~1.2.5",
+    "http-proxy": "~1.10.1",
+    "lodash": "~3.7.0",
+    "extract-text-webpack-plugin": "~0.5.0",
+    "compression-webpack-plugin": "~0.2.0",
+    "webpack": "~1.10.1"
+  },
+  "dependencies": {
+    "express": "~4.12.3",
+    "react": "~0.13.1",
+    "react-router": "~0.13.1",
+    "flux": "~2.0.1",
+    "events": "~1.0.2"
+  }
+}

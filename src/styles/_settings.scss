@@ -1,0 +1,27 @@
+/*------------------------------------*\
+    #TYPOGRAPHY_SETTINGS
+\*------------------------------------*/
+
+// Typography
+// ==========================================================================
+
+// Font Weights
+$extra-light:           100;
+$light:                 300;
+$normal:                500;
+$bold:                  700;
+$extra-bold:            900;
+
+// Font Families
+$helvetica-font-family:     'Helvetica', 'arial', 'sans-serif' !default;
+
+// Base Font
+$base-font-family:      $helvetica-font-family;
+$base-font-weight:      $light;
+
+// Heading Font
+$header-font-family:    $helvetica-font-family !default;
+$header-font-weight:    $extra-bold;
+
+//Colors
+$header-color: rgb(31, 132, 231);
