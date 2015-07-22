@@ -22,7 +22,6 @@ var Home = React.createClass({
         AppStore.removeChangeListener(this._onChange);
     },
     _onChange: function() {
-        console.log('change Home page!');
         this.setState({
             trainers: AppStore.getTrainers(),
             pokemon: AppStore.getPokemon()
@@ -31,8 +30,6 @@ var Home = React.createClass({
     render: function() {
         return (
             <div>
-                <h1>This is the homepage</h1>
-
                 <h2>Trainers:</h2>
                 <TrainerTable trainers={this.state.trainers} />
 

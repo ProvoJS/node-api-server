@@ -1,43 +1,55 @@
 /*** @jsx React.DOM */
 import React from 'react';
-import PokemonTable from '../../shared/PokemonTable';
+import AppStore from '../../flux/stores/AppStore';
+import AppActions from '../../flux/actions/AppActions';
 
-var getTrainerById = function(trainerId, callback) {
-    setTimeout(function() {
-        var trainer = {
-            id: 1,
-            name: 'Ash'
-        };
-        callback(null, trainer);
-    }, 500);
-};
+import PokemonTable from '../../shared/PokemonTable';
 
 var TrainerDetails = React.createClass({
     getInitialState: function() {
         return {
-            trainer: {
-                id: 1,
-                name: 'Ash'
-            }
+            trainer: AppStore.getCurrentTrainer(),
+            pokemon: AppStore.getPokemonForCurrentTrainer()
         };
+    },
+    componentWillMount: function() {
+        AppStore.clearCurrentTrainer();
+        AppStore.clearPokemonForCurrentTrainer();
     },
     componentDidMount: function() {
         var trainerId = this.props.params.id;
-        console.log('trainer id:', trainerId);
-        // getTrainerById(trainerId, function(err, trainer) {
-        //     console.log('got!', trainer);
-        // });
-        // fetchMessage(id, function (err, message) {
-        //     this.setState({ message: message });
-        // })
+        AppStore.addChangeListener(this._onChange);
+        AppActions.fetchTrainerById(trainerId);
+        AppActions.fetchPokemonByTrainerId(trainerId);
+    },
+    componentWillUnmount: function() {
+        AppStore.removeChangeListener(this._onChange);
+    },
+    _onChange: function() {
+        this.setState({
+            trainer: AppStore.getCurrentTrainer(),
+            pokemon: AppStore.getPokemonForCurrentTrainer()
+        });
     },
     render: function() {
+        var trainerRow;
+        if (this.state.trainer !== null) {
+            trainerRow = (
+                <h2>{this.state.trainer.id} - {this.state.trainer.name}</h2>
+            );
+        } else {
+            trainerRow = (
+                <h2>No trainer data</h2>
+            )
+        }
+
+
         return(
             <div>
                 <h1>Trainer Details</h1>
-                <h2>{this.state.trainer.id} - {this.state.trainer.name}</h2>
+                {trainerRow}
 
-                <PokemonTable />
+                <PokemonTable pokemon={this.state.pokemon} />
             </div>
         );
     }

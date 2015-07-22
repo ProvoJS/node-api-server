@@ -15,8 +15,21 @@ var AppActions = {
                 console.error('fetching or parsing failed', ex);
             });
     },
-    fetchTrainerById: function() {
-
+    fetchTrainerById: function(trainerId) {
+        fetch(`http://localhost:4000/api/trainers/${trainerId}`)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw response;
+                }
+                return response.json();
+            }).then(function(trainer) {
+                AppDispatcher.handleAction({
+                    actionType: appConstants.FETCH_TRAINER,
+                    data: trainer
+                });
+            }).catch(function(ex) {
+                console.error(`Failed to fetch trainer by ID: ${ex.status} ${ex.statusText}`);
+            });
     },
     addTrainer: function(trainer) {
         AppDispatcher.handleAction({
@@ -38,8 +51,20 @@ var AppActions = {
             });
     },
     fetchPokemonByTrainerId: function(trainerId) {
-        //TODO: implement
-        console.log('Fetching...');
+        fetch(`http://localhost:4000/api/trainers/${trainerId}/pokemon`)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw response;
+                }
+                return response.json();
+            }).then(function(pokemon) {
+                AppDispatcher.handleAction({
+                    actionType: appConstants.FETCH_POKEMON_FOR_TRAINER,
+                    data: pokemon
+                });
+            }).catch(function(ex) {
+                console.error(`Failed to fetch pokemon for trainer: ${ex.status} ${ex.statusText}`);
+            });
     },
     addPokemon: function(pokemon) {
         AppDispatcher.handleAction({

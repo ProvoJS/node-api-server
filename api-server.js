@@ -46,6 +46,9 @@ app.get('/api/pokemon', function(request, response) {
 app.get('/api/pokemon/:id', function(request, response) {
     var pokemonId = request.params.id;
     response.json(db.getPokemonById(pokemonId));
+    /**
+     * TODO: finish implementing the `db.getPokemonById` function.
+     */
 });
 
 /**
