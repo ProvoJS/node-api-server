@@ -9,12 +9,14 @@ npm install
 npm start
 ```
 
-Now you can access the Web app (http://localhost:3000) and the API (http://localhost:4000).
+Now you can access the Web app (`http://localhost:3000`) and the API (`http://localhost:4000`).
 
 ## Current API endpoints
 
 - `GET /api/trainers` (Get all the trainers in the database)
 - `GET /api/pokemon` (Get all the pokemon in the database)
+
+You can test out these endpoints in your web browser by navigating to `http://localhost:4000/api/trainers` and `http://localhost:4000/api/pokemon`. You can also format the JSON data that is returned with a Chrome extension - see below.
 
 ## Completing the project
 
