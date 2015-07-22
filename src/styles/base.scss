@@ -12,14 +12,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    // @include transition (opacity .25s ease-in-out);
     text-decoration: none;
-    &:hover {
-        opacity: 0.7;
+
+    &:link, &:visited {
+        color: $link-color;
     }
-    &:active {}
-    &:focus {}
-    &:link {
-        // -webkit-tap-highlight-color: rgba($clr-black, 0);
+
+    &:hover, &:active, &:focus {
+        color: $link-hover-color;
+    }
+}
+
+
+.pokemon-table, .trainer-table {
+    margin: 10px 0 30px;
+    border: 1px solid $color-table-border;
+    border-collapse: collapse;
+
+    thead {
+        th, td {
+            background-color: $background-color-table;
+        }
+    }
+
+    th, td {
+        border: 1px solid $color-table-border;
+        text-align: left;
+        padding: 5px 20px;
     }
 }
