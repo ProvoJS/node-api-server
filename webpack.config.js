@@ -24,9 +24,9 @@ module.exports = getConfig({
   htmlConfig: {
     title: '[App Title Here]',
     favicon: '',// /path/to/favicon.ico
-    googleFonts: [
-      ''// name of google font i.e Noto+Sans
-    ],
+    // googleFonts: [
+    //   'Noto+Sans'// name of google font i.e Noto+Sans
+    // ],
     gaId: '[Google Analytics Id Here]',
     reactHook: {// what element is your react app hooking into?
       attr: 'id',

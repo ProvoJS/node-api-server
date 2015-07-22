@@ -2,8 +2,10 @@
  * Load dependencies
  */
 var express = require('express');
+var cors = require('cors');
 var db = require('./database.js');
 var app = express();
+app.use(cors()); //This lets us use different ports for React and API.
 var port = 4000;
 
 /**
